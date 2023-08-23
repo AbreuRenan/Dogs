@@ -10,7 +10,7 @@ function Input({ label, type, name, value, onChange, onBlur, error }) {
       <input
         className={styles.input}
         type={type}
-        name={name}
+        id={name}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

@@ -3,35 +3,42 @@ import { Link } from "react-router-dom";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import useForm from "../../Hooks/useForm";
-
-const APIURL = "https://dogsapi.origamid.dev/json/jwt-auth/v1/token";
+import { TOKEN_POST, USER_GET } from "../../api";
 
 function LoginForm() {
   const username = useForm();
   const password = useForm();
   const [token, setToken] = React.useState("");
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    async function asyncFecth(url) {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      const json = await response.json();
-      setToken(json.token);
-      return { response, json };
-    }
-    if (username.validate() && password.validate()) {
-      asyncFecth(APIURL);
-    }
+  React.useEffect(() => {
+    const localToken = window.localStorage.getItem("token");
+    if (localToken) getUser(localToken);
+  }, []);
+
+  async function getUser(userToken) {
+    const { url, options } = USER_GET(userToken);
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
   }
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (username.validate() && password.validate()) {
+      const { url, options } = TOKEN_POST({
+        username: username.value,
+        password: password.value,
+      });
+
+      const response = await fetch(url, options);
+      const json = await response.json();
+      setToken(json.token);
+      window.localStorage.setItem("token", token);
+      getUser(token);
+    }
+  }
   return (
-    <div>
+    <div className="container">
       <h1>Login</h1>
       <form action="" onSubmit={handleSubmit}>
         <Input label="usuario" type="text" name="username" {...username} />
@@ -45,5 +52,4 @@ function LoginForm() {
     </div>
   );
 }
-
 export default LoginForm;
