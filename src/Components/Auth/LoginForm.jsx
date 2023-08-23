@@ -37,6 +37,7 @@ function LoginForm() {
           type="text"
           name="username"
           placeholder="Seu nome de usuário"
+          erroMsg="Nome de usuário inválido"
         />
         <Input
           label="usuario"
