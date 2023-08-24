@@ -11,7 +11,17 @@ export function UserStorage({ children }) {
   const [error, setError] = React.useState(false);
 
   const navigate = useNavigate();
-
+  const userLogout = React.useCallback(
+    async function () {
+      setUserData(null);
+      setError(null);
+      setLoading(false);
+      setLogedIn(false);
+      window.localStorage.removeItem("token");
+      navigate("/login");
+    },
+    [navigate]
+  );
   React.useEffect(() => {
     async function autoLogin() {
       const localToken = window.localStorage.getItem("token");
@@ -31,7 +41,7 @@ export function UserStorage({ children }) {
       }
     }
     autoLogin();
-  }, []);
+  }, [userLogout]);
 
   async function getUser(userToken) {
     const { url, options } = USER_GET(userToken);
@@ -39,7 +49,6 @@ export function UserStorage({ children }) {
     const json = await response.json();
     setUserData(json);
     setLogedIn(true);
-    navigate("/conta");
   }
 
   async function userLogin(username, password) {
@@ -52,21 +61,13 @@ export function UserStorage({ children }) {
       window.localStorage.setItem("token", json.token);
       if (!tokenRes.ok) throw new Error(`${json.message}`);
       await getUser(json.token);
+      navigate("/conta");
     } catch (err) {
       setError(err.message);
       setLogedIn(false);
     } finally {
       setLoading(false);
     }
-  }
-
-  async function userLogout() {
-    navigate("/login");
-    setUserData(null);
-    setError(null);
-    setLoading(false);
-    setLogedIn(false);
-    window.localStorage.removeItem("token");
   }
   return (
     <UserContext.Provider
