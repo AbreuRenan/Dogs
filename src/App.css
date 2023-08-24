@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,700;1,600&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
+    color: #333;
 }
 
 body {
-    color: #333;
     --type-first: Helvetica, Arial, sans-serif;
     --type-second: 'Spectral', Georgia;
     font-family:  var(--type-first);
@@ -29,4 +31,42 @@ button,input {
     max-width: 50rem;
     padding: 0 1rem;
     margin: 0 auto;
+}
+
+.title {
+    font-family: var(--type-second);
+    line-height: 1;
+    font-size: 3rem;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.5rem; height: 1.5rem;
+    background-color: #fb1;
+    bottom: 5px;
+    left: -5px;
+    border-radius: 0.2rem;
+    z-index: -1;
+}
+
+.animeLeft {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: animaleft .3s forwards;
+    transition: ease .3s;
+}
+
+.delay {
+    animation-delay: .2s;
+}
+
+@keyframes animaleft {
+    to {
+        opacity: 1;
+        transform: initial;
+    }
 }
