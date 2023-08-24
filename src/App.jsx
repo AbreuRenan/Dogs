@@ -7,6 +7,7 @@ import Login from "./Components/Auth/Login";
 import { UserContext, UserStorage } from "./UserContext";
 
 import "./App.css";
+import Conta from "./Components/Conta";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login/*" element={<Login />} />
+            <Route path="conta" element={<Conta />} />
           </Routes>
           <Footer />
         </UserStorage>
