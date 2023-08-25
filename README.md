@@ -2,4 +2,4 @@
 
 Projeto de conclusão do curso de React da Origamid.
 
-https://dogs-one-nu.vercel.app/
+https://renanabreu-dogs.vercel.app/
