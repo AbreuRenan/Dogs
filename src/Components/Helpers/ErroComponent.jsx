@@ -1,7 +1,6 @@
 import React from "react";
 
 function ErroComponent({ msg }) {
-  console.log(msg);
   if (msg == false) return null;
   return (
     <p

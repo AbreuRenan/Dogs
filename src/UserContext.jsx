@@ -77,8 +77,8 @@ export function UserStorage({ children }) {
         userData,
         loading,
         error,
-        logedIn,
         setError,
+        logedIn,
       }}
     >
       {children}
