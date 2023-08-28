@@ -5,14 +5,15 @@ import useForm from "../../Hooks/useForm";
 import { USER_POST } from "../../api";
 import { UserContext } from "../../UserContext";
 import ErroComponent from "../Helpers/ErroComponent";
+import useFetch from "../../Hooks/useFetch";
 
 function Criarconta() {
   const username = useForm();
   const email = useForm("email");
   const password = useForm();
-  const { error, setError, loading, setLoading, userLogin } =
-    React.useContext(UserContext);
+  const { setError, setLoading, userLogin } = React.useContext(UserContext);
 
+  const { loading, error, request } = useFetch();
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
@@ -22,17 +23,10 @@ function Criarconta() {
       email: email.value,
       password: password.value,
     });
-    try {
-      const response = await fetch(url, options);
-      const json = await response.json();
-      if (!response.ok) throw new Error(`Erro: ${json.message}`);
-      if (response.ok) userLogin(username.value, password.value);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    const { response } = await request(url, options);
+    if (response.ok) userLogin(username.value, password.value);
   }
+
   return (
     <section className="animeLeft">
       <h1 className="title">Cadastre-se</h1>
@@ -41,7 +35,7 @@ function Criarconta() {
         <Input label="Email" type="email" name="email" {...email} />
         <Input label="Senha" type="password" name="password" {...password} />
         {loading ? (
-          <Button disabled>Carregando</Button>
+          <Button disabled>Cadastrando...</Button>
         ) : (
           <Button onClick={handleSubmit}>Entrar</Button>
         )}
