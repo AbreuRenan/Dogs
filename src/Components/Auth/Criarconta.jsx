@@ -10,7 +10,7 @@ function Criarconta() {
   const username = useForm();
   const email = useForm("email");
   const password = useForm();
-  const { error, setError, loading, setLoading } =
+  const { error, setError, loading, setLoading, userLogin } =
     React.useContext(UserContext);
 
   async function handleSubmit(event) {
@@ -26,6 +26,7 @@ function Criarconta() {
       const response = await fetch(url, options);
       const json = await response.json();
       if (!response.ok) throw new Error(`Erro: ${json.message}`);
+      if (response.ok) userLogin(username.value, password.value);
     } catch (err) {
       setError(err.message);
     } finally {
