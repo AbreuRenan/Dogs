@@ -11,17 +11,13 @@ export function UserStorage({ children }) {
   const [error, setError] = React.useState(false);
 
   const navigate = useNavigate();
-  const userLogout = React.useCallback(
-    async function () {
-      setUserData(null);
-      setError(null);
-      setLogedIn(null);
-      setLoading(false);
-      window.localStorage.removeItem("token");
-      navigate("/login");
-    },
-    [navigate]
-  );
+  const userLogout = React.useCallback(async function () {
+    setUserData(null);
+    setError(null);
+    setLogedIn(null);
+    setLoading(false);
+    window.localStorage.removeItem("token");
+  }, []);
   React.useEffect(() => {
     async function autoLogin() {
       const localToken = window.localStorage.getItem("token");

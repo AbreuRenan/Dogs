@@ -17,7 +17,6 @@ function Header() {
             <NavLink to="/conta" className={styles.login}>
               Olá {userData.nome}
             </NavLink>
-            <button onClick={userLogout}>Sair</button>
           </div>
         ) : (
           <NavLink to="/login" className={styles.login}>
