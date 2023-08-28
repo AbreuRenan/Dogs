@@ -14,20 +14,16 @@ function Login() {
   if (logedIn === true) return <Navigate to="/conta" />;
   return (
     <>
-      {loading ? (
-        "Carregando..."
-      ) : (
-        <section className={styles.login}>
-          <div className={`${styles.forms} animeLeft`}>
-            <Routes>
-              <Route path="/" element={<LoginForm />} />
-              <Route path="criar" element={<Criarconta />} />
-              <Route path="perdeu" element={<Recuperarconta />} />
-              <Route path="reset" element={<Resetarsenha />} />
-            </Routes>
-          </div>
-        </section>
-      )}
+      <section className={styles.login}>
+        <div className={`${styles.forms} animeLeft`}>
+          <Routes>
+            <Route path="/" element={<LoginForm />} />
+            <Route path="criar" element={<Criarconta />} />
+            <Route path="perdeu" element={<Recuperarconta />} />
+            <Route path="reset" element={<Resetarsenha />} />
+          </Routes>
+        </div>
+      </section>
     </>
   );
 }
