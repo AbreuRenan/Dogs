@@ -6,7 +6,7 @@ export const UserContext = React.createContext();
 
 export function UserStorage({ children }) {
   const [userData, setUserData] = React.useState(null);
-  const [logedIn, setLogedIn] = React.useState(false);
+  const [logedIn, setLogedIn] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
 
@@ -15,8 +15,8 @@ export function UserStorage({ children }) {
     async function () {
       setUserData(null);
       setError(null);
+      setLogedIn(null);
       setLoading(false);
-      setLogedIn(false);
       window.localStorage.removeItem("token");
       navigate("/login");
     },
@@ -38,6 +38,8 @@ export function UserStorage({ children }) {
         } finally {
           setLoading(false);
         }
+      } else {
+        setLogedIn(false);
       }
     }
     autoLogin();
