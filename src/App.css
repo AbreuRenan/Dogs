@@ -39,6 +39,7 @@ button,input {
     font-size: 3rem;
     margin: 1rem 0;
     position: relative;
+    text-transform: capitalize;
 }
 
 .title::after {
