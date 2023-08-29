@@ -25,8 +25,8 @@ function LoginForm() {
     <section className="animeLeft">
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <Input label="usuario" type="text" name="username" {...username} />
-        <Input label="usuario" type="password" name="password" {...password} />
+        <Input label="Usuário" type="text" name="username" {...username} />
+        <Input label="Senha" type="password" name="password" {...password} />
         {loading ? (
           <Button disabled>Carregando</Button>
         ) : (
