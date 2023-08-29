@@ -7,11 +7,14 @@ import { ReactComponent as AdicionarSvg } from "../../Assets/adicionar.svg";
 import { ReactComponent as SairSgv } from "../../Assets/sair.svg";
 
 import styles from "./UserNavHeader.module.css";
+import useMedia from "../../Hooks/useMedia";
 
 function UserNavHeader() {
-  const [mobileState, setMobileState] = React.useState(false);
   const { userLogout } = React.useContext(UserContext);
   const navigate = useNavigate();
+
+  const mobileState = useMedia("(max-width: 40rem)");
+  console.log(mobileState);
 
   function handleLogout() {
     userLogout();
