@@ -13,6 +13,10 @@ const types = {
     \n 1 Letra Maiúscula no mínimo
     \n 1 Número no mínimo`,
   },
+  number: {
+    regex: /^\d+$/,
+    message: "Insira somente números",
+  },
 };
 
 function useForm(type) {
