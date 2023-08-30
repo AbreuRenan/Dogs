@@ -2,13 +2,14 @@ import React from "react";
 
 import styles from "./FeedPhotoItem.module.css";
 
-function FeedPhotoItem({ imgData }) {
-  const { id, src, idade, peso, title, date, acessos, author, total_comments } =
-    imgData;
+function FeedPhotoItem({ imgData, setModalPhoto }) {
+  function handleClick() {
+    setModalPhoto(imgData);
+  }
   return (
-    <li className={styles.photo}>
-      <img src={src} alt={title} />
-      <span className={styles.acessos}>{acessos}</span>
+    <li className={styles.photo} onClick={handleClick}>
+      <img src={imgData.src} alt={imgData.title} />
+      <span className={styles.acessos}>{imgData.acessos}</span>
     </li>
   );
 }
