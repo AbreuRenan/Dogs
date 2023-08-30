@@ -7,8 +7,8 @@ import LoadingAnimation from "../Helpers/LoadingAnimation";
 
 import styles from "./FeedPhotos.module.css";
 
-function FeedPhotos() {
-  const { data, loading, erro, request } = useFetch();
+function FeedPhotos({ setModalPhoto }) {
+  const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
     async function fetchPhotos() {
@@ -22,13 +22,19 @@ function FeedPhotos() {
     fetchPhotos();
   }, [request]);
 
-  if (erro) return <ErrorComponent msg={erro} />;
+  if (error) return <ErrorComponent msg={error} />;
   if (loading) return <LoadingAnimation />;
   if (data) {
     return (
       <ul className={`${styles.feed} animeLeft`}>
         {data.map((item) => {
-          return <FeedPhotoItem key={item.id} imgData={item} />;
+          return (
+            <FeedPhotoItem
+              key={item.id}
+              imgData={item}
+              setModalPhoto={setModalPhoto}
+            />
+          );
         })}
       </ul>
     );
