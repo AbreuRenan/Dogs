@@ -1,7 +1,6 @@
 import React from "react";
 
 function PhotoComments({ id, comments }) {
-  console.log(comments);
   return (
     <ul>
       {comments.map((comment) => {

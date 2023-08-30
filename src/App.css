@@ -44,7 +44,10 @@ button,input {
     position: relative;
     text-transform: capitalize;
 }
-
+.title>a{
+    position: relative;
+    z-index: 1;
+}
 .title::after {
     content: '';
     display: block;

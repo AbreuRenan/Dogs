@@ -6,7 +6,9 @@ function Feed() {
   const [modalPhoto, setModalPhoto] = React.useState(null);
   return (
     <div>
-      {modalPhoto && <FeedModal photoData={modalPhoto} />}
+      {modalPhoto && (
+        <FeedModal photoData={modalPhoto} setModalPhoto={setModalPhoto} />
+      )}
       <FeedPhotos setModalPhoto={setModalPhoto} />
     </div>
   );

@@ -6,7 +6,7 @@ import styles from "./FeedModal.module.css";
 import { PHOTO_GET } from "../../api";
 import PhotoContent from "../PhotoComponents/PhotoContent";
 
-function FeedModal({ photoData }) {
+function FeedModal({ photoData, setModalPhoto }) {
   const { data, loading, error, request } = useFetch();
   React.useEffect(() => {
     async function getSinglePhoto() {
@@ -16,13 +16,16 @@ function FeedModal({ photoData }) {
     getSinglePhoto();
   }, [photoData, request]);
 
-  if (error) return <ErroComponent msg={error} />;
-  if (loading) return <LoadingAnimation />;
-  if (data) {
-    return <PhotoContent postData={data} />;
-  } else {
-    return null;
+  function handleOutsideClick({ target, currentTarget }) {
+    if (target === currentTarget) setModalPhoto(null);
   }
+  return (
+    <div className={styles.modal} onClick={handleOutsideClick}>
+      {error && <ErroComponent msg={error} />}
+      {loading && <LoadingAnimation />}
+      {data && <PhotoContent postData={data} />}
+    </div>
+  );
 }
 
 export default FeedModal;
