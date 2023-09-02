@@ -18,7 +18,7 @@ function UserNewPost() {
 
   const { data, loading, error, request } = useFetch();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
     formData.append("nome", nome.value);
@@ -28,9 +28,7 @@ function UserNewPost() {
 
     const token = window.localStorage.getItem("token");
     const { url, options } = USER_NEW_POST(formData, token);
-    const { response, json } = request(url, options);
-    console.log(response);
-    console.log(json);
+    const { response, json } = await request(url, options);
   }
 
   function handleImg({ target }) {

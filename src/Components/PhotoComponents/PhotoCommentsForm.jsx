@@ -1,11 +1,30 @@
 import React from "react";
-import { ReactComponent as Enviar } from "../../Assets/enviar.svg";
+import { ReactComponent as EnviarSVG } from "../../Assets/enviar.svg";
 import useFetch from "../../Hooks/useFetch";
 import { COMMENT_POST } from "../../api";
+import styles from "./PhotoCommentsForm.module.css";
 
 function PhotoCommentsForm({ id, setComments }) {
   const [commentTextArea, setCommentTextArea] = React.useState("");
   const { request, error } = useFetch();
+  const textAreaRef = React.useRef(null);
+  const btnREF = React.useRef(null);
+
+  React.useEffect(() => {
+    const textAreaElement = textAreaRef.current;
+    textAreaElement.addEventListener("keyup", handleEnterKey);
+    return () => {
+      textAreaElement.removeEventListener("keyup", handleEnterKey);
+    };
+  }, []);
+
+  async function handleEnterKey(e) {
+    e.preventDefault();
+    if (e.keyCode === 13) {
+      e.currentTarget.blur();
+      btnREF.current.click();
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,22 +34,28 @@ function PhotoCommentsForm({ id, setComments }) {
       { comment: commentTextArea },
       token
     );
+
     const { response, json } = await request(url, options);
     if (response.ok) {
-      setComments((prev) => [...prev, json]);
+      setCommentTextArea("");
+      btnREF.current.blur();
+      setComments((comments) => [...comments, json]);
     }
   }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <textarea
         id="comment"
+        ref={textAreaRef}
         name="comment"
         placeholder="Insira seu comentário"
+        className={styles.textarea}
         value={commentTextArea}
         onChange={({ target }) => setCommentTextArea(target.value)}
       />
-      <button>
-        <Enviar />
+      <button className={styles.button} ref={btnREF}>
+        <EnviarSVG />
       </button>
     </form>
   );

@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./PhotoContent.module.css";
+import { UserContext } from "../../UserContext";
 import PhotoComments from "./PhotoComments";
+import PhotoDelete from "./PhotoDelete";
+
+import styles from "./PhotoContent.module.css";
 
 function PhotoContent({ postData }) {
+  const { userData } = React.useContext(UserContext);
   const { comments, photo } = postData;
+  const token = window.localStorage.getItem("token");
+
   return (
     <div className={styles.photo}>
       <div className={styles.img}>
@@ -13,9 +19,14 @@ function PhotoContent({ postData }) {
       <div className={styles.details}>
         <div>
           <p className={styles.author}>
-            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+            {userData?.username === photo?.author ? (
+              <PhotoDelete photoID={photo.id} token={token} />
+            ) : (
+              <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+            )}
             <span className={styles.visualizacoes}>{photo.acessos}</span>
           </p>
+
           <h1 className="title">
             <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
           </h1>
@@ -27,9 +38,7 @@ function PhotoContent({ postData }) {
           </ul>
         </div>
       </div>
-      <div className={styles.details}>
-        <PhotoComments id={photo.id} comments={comments} />
-      </div>
+      <PhotoComments id={photo.id} comments={comments} />
     </div>
   );
 }
