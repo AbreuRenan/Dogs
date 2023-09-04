@@ -51,7 +51,9 @@ function UserNewPost() {
         <input type="file" name="img" id="img" onChange={handleImg} />
 
         {loading ? (
-          <Button disabled>Enviando...</Button>
+          <Button disabled>
+            <span className="loading">Enviando</span>
+          </Button>
         ) : (
           <Button onClick={handleSubmit}>Enviar</Button>
         )}

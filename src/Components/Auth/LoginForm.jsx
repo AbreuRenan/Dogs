@@ -28,7 +28,9 @@ function LoginForm() {
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
         {loading ? (
-          <Button disabled>Carregando</Button>
+          <Button disabled>
+            <span className="loading">Carregando</span>
+          </Button>
         ) : (
           <Button>Entrar</Button>
         )}
