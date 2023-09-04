@@ -5,6 +5,7 @@ import PhotoComments from "./PhotoComments";
 import PhotoDelete from "./PhotoDelete";
 
 import styles from "./PhotoContent.module.css";
+import Image from "../Helpers/Image";
 
 function PhotoContent({ postData }) {
   const { userData } = React.useContext(UserContext);
@@ -14,7 +15,7 @@ function PhotoContent({ postData }) {
   return (
     <div className={styles.photo}>
       <div className={styles.img}>
-        <img src={photo.src} alt={photo.title} />
+        <Image src={photo.src} alt={photo.title} />
       </div>
       <div className={styles.details}>
         <div>
