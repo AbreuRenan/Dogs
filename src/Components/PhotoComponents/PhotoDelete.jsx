@@ -5,7 +5,7 @@ import { PHOTO_DELETE } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 function PhotoDelete({ photoID, token }) {
-  const { request, loading } = useFetch();
+  const { request, loading, setLoading } = useFetch();
   const navigate = useNavigate();
 
   async function handleClick() {
@@ -21,17 +21,17 @@ function PhotoDelete({ photoID, token }) {
   }
 
   return (
-    <div>
+    <>
       {loading ? (
-        <button className={styles.delete} disabled>
-          Deletando...
+        <button className={`${styles.delete} loading`} disabled>
+          Deletando
         </button>
       ) : (
         <button className={styles.delete} onClick={handleClick}>
           Deletar
         </button>
       )}
-    </div>
+    </>
   );
 }
 

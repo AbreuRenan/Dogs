@@ -25,7 +25,7 @@ function useFetch() {
     }
   }, []);
 
-  return { data, loading, error, request };
+  return { data, loading, error, request, setLoading };
 }
 
 export default useFetch;
