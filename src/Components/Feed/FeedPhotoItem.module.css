@@ -37,6 +37,7 @@ border-radius: 0.2rem;
     visibility: visible;
     opacity: 1;
     transform:initial;
+    z-index: 10 ;
 }
 .acessos::before{
     content: '';
