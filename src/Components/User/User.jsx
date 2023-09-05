@@ -13,7 +13,7 @@ function User() {
       {" "}
       <UserHeader />
       <Routes>
-        <Route path="/" element={<Feed />} />
+        <Route path="/" element={<Feed user={userData.id} />} />
         <Route path="/postar" element={<UserNewPost />} />
         <Route path="/estatisticas" element={<UserStats />} />
       </Routes>
