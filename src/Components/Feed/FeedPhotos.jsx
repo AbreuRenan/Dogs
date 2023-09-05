@@ -7,20 +7,23 @@ import LoadingAnimation from "../Helpers/LoadingAnimation";
 
 import styles from "./FeedPhotos.module.css";
 
-function FeedPhotos({ setModalPhoto }) {
+function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
+    const photosPerPage = 3;
     async function fetchPhotos() {
       const { url, options } = PHOTOS_GET({
-        page: 1,
-        total: 6,
-        user: 0,
+        page: page,
+        total: photosPerPage,
+        user: user,
       });
       const { response, json } = await request(url, options);
+      console.log("request", json);
+      if (response.ok && json.length < photosPerPage) setInfinite(false);
     }
     fetchPhotos();
-  }, [request]);
+  }, [request, user, page, setInfinite]);
 
   if (error) return <ErrorComponent msg={error} />;
   if (loading) return <LoadingAnimation />;
