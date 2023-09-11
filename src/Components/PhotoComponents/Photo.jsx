@@ -16,7 +16,6 @@ function Photo() {
     async function fetchPhoto() {
       const { url, options } = PHOTO_GET(id);
       const { response, json } = await request(url, options);
-      console.log(json);
       setPhotoData(json);
     }
     fetchPhoto();
@@ -26,7 +25,7 @@ function Photo() {
   if (data)
     return (
       <section className="container mainContainer">
-        <PhotoContent postData={photoData} />
+        <PhotoContent postData={photoData} single={true} />
       </section>
     );
 }

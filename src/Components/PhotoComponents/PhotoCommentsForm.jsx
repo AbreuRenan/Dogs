@@ -4,7 +4,7 @@ import useFetch from "../../Hooks/useFetch";
 import { COMMENT_POST } from "../../api";
 import styles from "./PhotoCommentsForm.module.css";
 
-function PhotoCommentsForm({ id, setComments }) {
+function PhotoCommentsForm({ id, setComments, single }) {
   const [commentTextArea, setCommentTextArea] = React.useState("");
   const { request, error } = useFetch();
   const textAreaRef = React.useRef(null);
@@ -44,13 +44,16 @@ function PhotoCommentsForm({ id, setComments }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form
+      onSubmit={handleSubmit}
+      className={`${styles.form}  ${single ? styles.single : ""}`}
+    >
       <textarea
         id="comment"
         ref={textAreaRef}
         name="comment"
         placeholder="Insira seu comentário"
-        className={styles.textarea}
+        className={`${styles.textarea}`}
         value={commentTextArea}
         onChange={({ target }) => setCommentTextArea(target.value)}
       />

@@ -11,6 +11,12 @@
     transform: scale(.8);
     animation: modalOpen .25s forwards;
 }
+
+.photo.singlePhoto {
+    grid-template-columns: 1fr;
+    height: auto;
+
+}
 @keyframes modalOpen {
     to {
         opacity: 1;
@@ -21,13 +27,21 @@
 .details {
     padding: 2rem 2rem 0 2rem ;
 }
+.singlePhoto .details {
+    padding: 1rem 0 0 0;
+
+}
 
 .img {
     grid-row: 1/4;
 }
-.comments {
-    padding: 0 2rem;
+
+.singlePhoto .img {
+    grid-row: 1;
+    border-radius: .4rem;
+    overflow: hidden;
 }
+
 .author {
     margin-bottom: 1rem;
     display: flex;
@@ -79,6 +93,10 @@
     max-height: calc(100vh - 4rem);
     overflow-y: auto ;
     grid-template-columns: minmax(20rem, 40rem);
+ }
+ .photo.singlePhoto {
+    height: auto;
+    max-height: initial ;
  }
  .img {
     grid-row: 1;
