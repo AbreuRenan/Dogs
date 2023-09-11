@@ -7,13 +7,13 @@ import PhotoDelete from "./PhotoDelete";
 import styles from "./PhotoContent.module.css";
 import Image from "../Helpers/Image";
 
-function PhotoContent({ postData }) {
+function PhotoContent({ postData, single }) {
   const { userData } = React.useContext(UserContext);
   const { comments, photo } = postData;
   const token = window.localStorage.getItem("token");
 
   return (
-    <div className={styles.photo}>
+    <div className={`${styles.photo} ${single ? styles.singlePhoto : ""}`}>
       <div className={styles.img}>
         <Image src={photo.src} alt={photo.title} />
       </div>
@@ -39,7 +39,7 @@ function PhotoContent({ postData }) {
           </ul>
         </div>
       </div>
-      <PhotoComments id={photo.id} comments={comments} />
+      <PhotoComments id={photo.id} comments={comments} single={single} />
     </div>
   );
 }

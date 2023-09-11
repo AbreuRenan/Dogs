@@ -5,6 +5,7 @@ import PhotoCommentsForm from "./PhotoCommentsForm";
 import styles from "./PhotoComments.module.css";
 
 function PhotoComments(props) {
+  const { single } = props;
   const [comments, setComments] = React.useState(() => props.comments);
   const commentsSection = React.useRef(null);
   const { logedIn } = React.useContext(UserContext);
@@ -15,7 +16,10 @@ function PhotoComments(props) {
 
   return (
     <>
-      <ul ref={commentsSection} className={styles.comments}>
+      <ul
+        ref={commentsSection}
+        className={`${styles.comments} ${single ? styles.single : ""}`}
+      >
         {comments.map((c) => {
           return (
             <li key={c.comment_ID}>
@@ -25,7 +29,13 @@ function PhotoComments(props) {
           );
         })}
       </ul>
-      {logedIn && <PhotoCommentsForm id={props.id} setComments={setComments} />}
+      {logedIn && (
+        <PhotoCommentsForm
+          id={props.id}
+          setComments={setComments}
+          single={single}
+        />
+      )}
     </>
   );
 }

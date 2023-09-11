@@ -3,7 +3,10 @@
     word-break: break-word;
     padding: 0 2rem; 
     min-height: 100px;
+}
 
+.single.comments  {
+    padding: 0;
 }
 
 .comments li {
