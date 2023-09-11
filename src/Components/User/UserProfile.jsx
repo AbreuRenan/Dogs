@@ -6,9 +6,10 @@ import Feed from "../Feed/Feed";
 function UserProfile() {
   const { user } = useParams();
   return (
-    <div>
+    <section className="container mainContainer">
+      <h1 className="title">{user}</h1>
       <Feed user={user} />
-    </div>
+    </section>
   );
 }
 
