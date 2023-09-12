@@ -7,7 +7,7 @@ import LoadingAnimation from "../Helpers/LoadingAnimation";
 
 import styles from "./FeedPhotos.module.css";
 
-function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
+function FeedPhotos({ user, page, setModalPhoto, setInfinite, infinite }) {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -28,17 +28,20 @@ function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
   if (loading) return <LoadingAnimation />;
   if (data) {
     return (
-      <ul className={`${styles.feed} animeLeft`}>
-        {data.map((item) => {
-          return (
-            <FeedPhotoItem
-              key={item.id}
-              imgData={item}
-              setModalPhoto={setModalPhoto}
-            />
-          );
-        })}
-      </ul>
+      <>
+        <ul className={`${styles.feed} animeLeft`}>
+          {data.map((item) => {
+            return (
+              <FeedPhotoItem
+                key={item.id}
+                imgData={item}
+                setModalPhoto={setModalPhoto}
+              />
+            );
+          })}
+        </ul>
+        {!infinite && <p>Não existem mais fotos</p>}
+      </>
     );
   } else return null;
 }
