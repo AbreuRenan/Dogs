@@ -12,14 +12,11 @@ function Recuperarconta() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (login.validate()) {
-      // console.log(login);
       const { url, options } = LOST_PASSWORD({
         login: login.value,
         url: window.location.href.replace("perdeu", "reset"),
       });
       const { response, json } = await request(url, options);
-      console.log("response", response);
-      console.log("json", json);
     }
   }
 
