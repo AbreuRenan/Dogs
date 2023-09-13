@@ -7,7 +7,7 @@ import LoadingAnimation from "../Helpers/LoadingAnimation";
 
 import styles from "./FeedPhotos.module.css";
 
-function FeedPhotos({ user, page, setModalPhoto, setInfinite, infinite }) {
+function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -40,7 +40,6 @@ function FeedPhotos({ user, page, setModalPhoto, setInfinite, infinite }) {
             );
           })}
         </ul>
-        {!infinite && <p>Não existem mais fotos</p>}
       </>
     );
   } else return null;
