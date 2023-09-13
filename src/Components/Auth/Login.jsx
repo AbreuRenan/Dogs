@@ -9,6 +9,7 @@ import { UserContext } from "../../UserContext";
 
 import styles from "./Login.module.css";
 import NotFound from "../NotFound";
+import Head from "../Helpers/Head";
 
 function Login() {
   const { logedIn, loading } = useContext(UserContext);
@@ -17,6 +18,7 @@ function Login() {
     <>
       <section className={styles.login}>
         <div className={`${styles.forms} animeLeft`}>
+          <Head title="Login" />
           <Routes>
             <Route path="/" element={<LoginForm />} />
             <Route path="criar" element={<Criarconta />} />

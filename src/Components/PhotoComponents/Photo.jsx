@@ -6,6 +6,7 @@ import FeedPhotoItem from "../Feed/FeedPhotoItem";
 import ErroComponent from "../Helpers/ErroComponent";
 import LoadingAnimation from "../Helpers/LoadingAnimation";
 import PhotoContent from "./PhotoContent";
+import Head from "../Helpers/Head";
 
 function Photo() {
   const [photoData, setPhotoData] = React.useState(null);
@@ -25,6 +26,7 @@ function Photo() {
   if (data)
     return (
       <section className="container mainContainer">
+        <Head title={photoData.photo.title} />
         <PhotoContent postData={photoData} single={true} />
       </section>
     );
