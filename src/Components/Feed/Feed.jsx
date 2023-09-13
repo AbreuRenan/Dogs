@@ -46,10 +46,10 @@ function Feed({ user }) {
             page={page}
             setModalPhoto={setModalPhoto}
             setInfinite={setInfinite}
-            infinite={infinite}
           />
         );
       })}
+      {!infinite && <p>Não existem mais fotos</p>}
     </div>
   );
 }
