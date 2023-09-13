@@ -49,18 +49,6 @@ export function USER_POST(body) {
     },
   };
 }
-export function LOST_PASSWORD(body) {
-  return {
-    url: API_URL + "/api/password/lost",
-    options: {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify(body),
-    },
-  };
-}
 
 export function USER_NEW_POST(formdata, token) {
   return {
@@ -114,6 +102,19 @@ export function PHOTO_DELETE(id, token) {
       headers: {
         Authorization: "Bearer " + token,
       },
+    },
+  };
+}
+
+export function LOST_PASSWORD(body) {
+  return {
+    url: API_URL + "/api/password/lost",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     },
   };
 }
