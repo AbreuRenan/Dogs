@@ -38,9 +38,6 @@ function Resetarsenha() {
   return (
     <section>
       <h1 className="title">Resetar senha</h1>
-      <p>{login}</p>
-      <p>{key}</p>
-
       <form onSubmit={handleSubmit}>
         <Input
           label="Nova Senha"
@@ -50,7 +47,7 @@ function Resetarsenha() {
         />
         {loading ? (
           <Button disabled>
-            <span className="loading">Carregando</span>
+            <span className="loading">Enviando</span>
           </Button>
         ) : (
           <Button>Entrar</Button>
