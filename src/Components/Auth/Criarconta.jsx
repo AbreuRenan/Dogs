@@ -6,6 +6,7 @@ import { USER_POST } from "../../api";
 import { UserContext } from "../../UserContext";
 import ErroComponent from "../Helpers/ErroComponent";
 import useFetch from "../../Hooks/useFetch";
+import Head from "../Helpers/Head";
 
 function Criarconta() {
   const username = useForm();
@@ -29,6 +30,7 @@ function Criarconta() {
 
   return (
     <section className="animeLeft">
+      <Head title="Criar Conta" />
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />

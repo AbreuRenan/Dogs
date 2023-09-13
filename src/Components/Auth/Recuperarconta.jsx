@@ -5,6 +5,7 @@ import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
 import { LOST_PASSWORD } from "../../api";
 import ErroComponent from "../Helpers/ErroComponent";
+import Head from "../Helpers/Head";
 
 function Recuperarconta() {
   const login = useForm();
@@ -22,6 +23,7 @@ function Recuperarconta() {
 
   return (
     <section>
+      <Head title="Esqueci minha senha" />
       <h1 className="title">Perdeu a Senha</h1>
       {data ? (
         <p style={{ color: "#4c1" }}>Email enviado</p>

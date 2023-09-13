@@ -1,12 +1,12 @@
 import React from "react";
 import Feed from "./Feed/Feed";
-import LoadingAnimation from "./Helpers/LoadingAnimation";
+import Head from "./Helpers/Head";
 
 function Home() {
   return (
     <section className="container mainContainer">
+      <Head title="Home" description="Feed de Fotos da rede Dogs" />
       <Feed />
-      {/* <LoadingAnimation /> */}
     </section>
   );
 }
