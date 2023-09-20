@@ -83,6 +83,11 @@ button,input {
     animation: pontinho 3s infinite ;
 
 }
+.noFotos {
+    color: #777;
+    text-align: center;
+    margin: 2rem auto;
+}
 
 @keyframes pontinho {
     0% {
@@ -100,4 +105,14 @@ button,input {
     100% {
         content: '';
     }
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh+10rem);
+}
+
+.AppBody {
+    flex: 1;
 }

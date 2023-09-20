@@ -49,7 +49,7 @@ function Feed({ user }) {
           />
         );
       })}
-      {!infinite && <p>Não existem mais fotos</p>}
+      {!infinite && <p className="noFotos">Não existem mais fotos</p>}
     </div>
   );
 }
