@@ -34,7 +34,7 @@ function LoginForm() {
         ) : (
           <Button>Entrar</Button>
         )}
-        <ErroComponent msg={error} />
+        <ErroComponent msg={error && "Dados incorretos"} />
       </form>
       <div className="animeLeft delay">
         <Link className={styles.perdeu} to="/login/perdeu">

@@ -4,6 +4,12 @@
     gap: 2rem;
     margin-bottom: 2rem;
 }
+
+@media (max-width: 40rem) {
+    .newPost {
+        grid-template-columns: 1fr;
+    }
+}
 .newPost input[type="file"] {
     margin-bottom: 1rem;
 }
