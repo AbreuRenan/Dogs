@@ -51,7 +51,7 @@ function Feed({ user }) {
         );
       })}
       {!infinite && (
-        <p className="noFotos">Não existem mais fotos à carregar</p>
+        <p className="noFotos">Não existem mais fotos à carregar.</p>
       )}
     </div>
   );
