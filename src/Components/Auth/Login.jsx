@@ -16,7 +16,7 @@ function Login() {
   if (logedIn === true) return <Navigate to="/conta" />;
   return (
     <>
-      <section className={styles.login}>
+      <section className={`${styles.login} container`}>
         <div className={`${styles.forms} animeLeft`}>
           <Head title="Login" />
           <Routes>
