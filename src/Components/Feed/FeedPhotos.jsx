@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 
 function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
   const photoListRef = React.useRef();
-  const [photoCount, setPhotoCount] = React.useState(0);
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -27,15 +26,9 @@ function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
     fetchPhotos();
   }, [request, user, page, setInfinite]);
 
-  React.useEffect(() => {
-    if (data?.length > 0) {
-      setPhotoCount(photoListRef?.current.childElementCount);
-    }
-  }, [data]);
-
   if (error) return <ErrorComponent msg={error} />;
   if (loading) return <LoadingAnimation />;
-  if (photoCount == 0) {
+  if (data?.length == 0 && window.location.pathname == "/conta") {
     return (
       <p className="noFotos">
         Você ainda não postou nenhuma foto!{" "}
