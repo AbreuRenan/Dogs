@@ -15,9 +15,13 @@
 }
 
 .forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     max-width: 30rem;
     padding: 0 1rem;
     border-radius: 0.2rem;
+
 }
 
 @media screen and (max-width: 40rem) {

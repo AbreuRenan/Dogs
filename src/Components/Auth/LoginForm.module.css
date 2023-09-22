@@ -1,6 +1,35 @@
 .form {
     margin-bottom: 2rem;
 }
+.btnGroup{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.btnGroup>a {
+    text-align: center;
+    font-size: 1rem;
+    font-family: var(--type-first);
+    cursor: pointer;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.8rem 1.2rem;
+    min-width: 8rem;
+    transition: 0.1s ease;
+    background-color: #ddd;
+    color: #333;
+}
+.btnGroup>a:hover, .btnGroup>a:focus {
+    background-color: #bbb;
+    box-shadow: 0 0 0 3px #eee, 0 0 0 4px #ddd;
+    outline: none;
+}
+:global(.loginForm) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
 .perdeu {
     display: inline-block;
     color: #666;
@@ -17,6 +46,7 @@
 
 .cadastro {
     margin-top: 2.5rem;
+    margin-bottom: 4rem;
 }
 .cadastro>p {
     margin: 1.5rem 0;

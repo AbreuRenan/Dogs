@@ -7,6 +7,9 @@ import { LOST_PASSWORD } from "../../api";
 import ErroComponent from "../Helpers/ErroComponent";
 import Head from "../Helpers/Head";
 
+import styles from "./LoginForm.module.css";
+import { Link } from "react-router-dom";
+
 function Recuperarconta() {
   const login = useForm();
   const { request, loading, error, data } = useFetch();
@@ -22,7 +25,7 @@ function Recuperarconta() {
   }
 
   return (
-    <section>
+    <section className="animeLeft">
       <Head title="Esqueci minha senha" />
       <h1 className="title">Perdeu a Senha</h1>
       {data ? (
@@ -35,10 +38,14 @@ function Recuperarconta() {
               <span className="loading">Enviando</span>
             </Button>
           ) : (
-            <Button>Entrar</Button>
+            <div className={styles.btnGroup}>
+              <Link to={"/login"}>Voltar</Link>
+              <Button onClick={handleSubmit}>Entrar</Button>{" "}
+            </div>
           )}
         </form>
       )}
+
       <ErroComponent msg={error} />
     </section>
   );

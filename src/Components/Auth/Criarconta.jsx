@@ -8,6 +8,9 @@ import ErroComponent from "../Helpers/ErroComponent";
 import useFetch from "../../Hooks/useFetch";
 import Head from "../Helpers/Head";
 
+import styles from "./LoginForm.module.css";
+import { Link, NavLink } from "react-router-dom";
+
 function Criarconta() {
   const username = useForm();
   const email = useForm("email");
@@ -39,7 +42,10 @@ function Criarconta() {
         {loading ? (
           <Button disabled>Cadastrando...</Button>
         ) : (
-          <Button onClick={handleSubmit}>Entrar</Button>
+          <div className={styles.btnGroup}>
+            <Link to={"/login"}>Voltar</Link>
+            <Button onClick={handleSubmit}>Entrar</Button>{" "}
+          </div>
         )}
         {error && <ErroComponent msg={error} />}
       </form>

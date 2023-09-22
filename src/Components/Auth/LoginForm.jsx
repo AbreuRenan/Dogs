@@ -22,7 +22,7 @@ function LoginForm() {
   }
 
   return (
-    <section className="animeLeft">
+    <section className={`loginForm animeLeft`}>
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
