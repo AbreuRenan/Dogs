@@ -5,8 +5,10 @@ import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
 import { PASSWORD_RESET } from "../../api";
 import ErroComponent from "../Helpers/ErroComponent";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Head from "../Helpers/Head";
+
+import styles from "./LoginForm.module.css";
 
 function Resetarsenha() {
   const [login, setLogin] = React.useState(null);
@@ -37,7 +39,7 @@ function Resetarsenha() {
     }
   }
   return (
-    <section>
+    <section className="animeLeft">
       <Head title="Resete sua senha" />
       <h1 className="title">Resetar senha</h1>
       <form onSubmit={handleSubmit}>
@@ -52,7 +54,10 @@ function Resetarsenha() {
             <span className="loading">Enviando</span>
           </Button>
         ) : (
-          <Button>Entrar</Button>
+          <div className={styles.btnGroup}>
+            <Link to={"/login"}>Voltar</Link>
+            <Button onClick={handleSubmit}>Entrar</Button>{" "}
+          </div>
         )}
       </form>
       <ErroComponent msg={error} />

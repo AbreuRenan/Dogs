@@ -30,12 +30,14 @@ function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
   if (loading) return <LoadingAnimation />;
   if (data?.length == 0 && window.location.pathname == "/conta") {
     return (
-      <p className="noFotos">
-        Você ainda não postou nenhuma foto!{" "}
-        <NavLink to="/conta/postar" className={styles.navlink}>
-          Começe agora.
-        </NavLink>
-      </p>
+      <>
+        <p className="noFotos">
+          Você ainda não postou nenhuma foto!{" "}
+          <NavLink to="/conta/postar" className={styles.navlink}>
+            Começe agora.
+          </NavLink>
+        </p>
+      </>
     );
   }
 

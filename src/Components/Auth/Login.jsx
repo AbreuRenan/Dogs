@@ -15,20 +15,18 @@ function Login() {
   const { logedIn, loading } = useContext(UserContext);
   if (logedIn === true) return <Navigate to="/conta" />;
   return (
-    <>
-      <section className={`${styles.login} container`}>
-        <div className={`${styles.forms} animeLeft`}>
-          <Head title="Login" />
-          <Routes>
-            <Route path="/" element={<LoginForm />} />
-            <Route path="criar" element={<Criarconta />} />
-            <Route path="perdeu" element={<Recuperarconta />} />
-            <Route path="reset" element={<Resetarsenha />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </section>
-    </>
+    <section className={`${styles.login} container`}>
+      <div className={`${styles.forms} animeLeft`}>
+        <Head title="Login" />
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="criar" element={<Criarconta />} />
+          <Route path="perdeu" element={<Recuperarconta />} />
+          <Route path="reset" element={<Resetarsenha />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </section>
   );
 }
 

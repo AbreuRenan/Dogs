@@ -20,3 +20,13 @@
      opacity: 0.5;
      cursor: wait;
 }
+
+.btnSecondary {
+    background-color: #ddd;
+    color: #333;
+}
+.btnSecondary:hover, .btnSecondary:focus {
+    background-color: #ccc;
+    box-shadow: 0 0 0 3px #eee, 0 0 0 4px #ddd;
+    outline: none;
+}
