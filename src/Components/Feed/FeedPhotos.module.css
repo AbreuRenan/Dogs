@@ -5,6 +5,20 @@
     margin-bottom: 1rem;
     justify-content: center;
 }
+
+.navlink {
+    position: relative;
+    color: #fb1;
+    border: #fb1 1px solid;
+    padding: 0.25rem 0.5rem;
+    border-radius: .2rem;
+    transition: .2s;
+}
+.navlink:hover, .navlink:focus {
+    background-color: #fb1;
+    color: white;
+    box-shadow: 0 0 0 3px #fea;
+}
 @media screen and (max-width: 40rem) {
     .feed {
         grid-template-columns: 1fr 1fr ;

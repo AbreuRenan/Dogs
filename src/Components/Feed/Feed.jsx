@@ -24,6 +24,7 @@ function Feed({ user }) {
         }
       }
     }
+
     window.addEventListener("wheel", infiniteScroll);
     window.addEventListener("scroll", infiniteScroll);
 
@@ -49,7 +50,9 @@ function Feed({ user }) {
           />
         );
       })}
-      {!infinite && <p className="noFotos">Não existem mais fotos</p>}
+      {!infinite && (
+        <p className="noFotos">Não existem mais fotos à carregar</p>
+      )}
     </div>
   );
 }

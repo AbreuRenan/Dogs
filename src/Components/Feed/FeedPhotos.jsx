@@ -6,8 +6,11 @@ import ErrorComponent from "../Helpers/ErroComponent";
 import LoadingAnimation from "../Helpers/LoadingAnimation";
 
 import styles from "./FeedPhotos.module.css";
+import { NavLink } from "react-router-dom";
 
 function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
+  const photoListRef = React.useRef();
+  const [photoCount, setPhotoCount] = React.useState(0);
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -24,12 +27,29 @@ function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
     fetchPhotos();
   }, [request, user, page, setInfinite]);
 
+  React.useEffect(() => {
+    if (data?.length > 0) {
+      setPhotoCount(photoListRef?.current.childElementCount);
+    }
+  }, [data]);
+
   if (error) return <ErrorComponent msg={error} />;
   if (loading) return <LoadingAnimation />;
-  if (data) {
+  if (photoCount == 0) {
+    return (
+      <p className="noFotos">
+        Você ainda não postou nenhuma foto!{" "}
+        <NavLink to="/conta/postar" className={styles.navlink}>
+          Começe agora.
+        </NavLink>
+      </p>
+    );
+  }
+
+  if (data?.length > 0) {
     return (
       <>
-        <ul className={`${styles.feed} animeLeft`}>
+        <ul className={`${styles.feed} animeLeft`} ref={photoListRef}>
           {data.map((item) => {
             return (
               <FeedPhotoItem
@@ -42,7 +62,13 @@ function FeedPhotos({ user, page, setModalPhoto, setInfinite }) {
         </ul>
       </>
     );
-  } else return null;
+  } else
+    return (
+      <p>
+        Você ainda não postou nenhuma foto!{" "}
+        <NavLink to="/conta/postar">Começe agora.</NavLink>
+      </p>
+    );
 }
 
 export default FeedPhotos;
